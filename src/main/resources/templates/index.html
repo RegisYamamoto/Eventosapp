@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="utf-8">
+	<title>EventosApp</title>
+</head>
+
+<body>
+	<h1>Lista de Eventos</h1>
+	
+	<h3><a href="/eventosapp-0.0.1-SNAPSHOT/cadastrarEvento">Cadastrar Evento</a></h3>
+	<h3><a href="/eventosapp-0.0.1-SNAPSHOT/eventos">Lista de Eventos</a></h3>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Local</th>
+				<th>Data</th>
+				<th>Horario</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="evento : ${eventos}">
+				<td th:text="${evento.nome}"></td>
+				<td th:text="${evento.local}"></td>
+				<td th:text="${evento.data}"></td>
+				<td th:text="${evento.horario}"></td>
+				<td><a th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}">excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
